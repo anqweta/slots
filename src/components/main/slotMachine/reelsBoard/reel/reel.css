@@ -2,10 +2,27 @@
     width: 30%;
     height: 260px;
     background-color: #16162a;
+    overflow: hidden;
+}
+.reel__tape {
+    transition: transform 1.5s cubic-bezier(0.1, 0.7, 0.1, 1);
 }
 .reel__item {
     width: 70%; 
     height: 100px !important;
-    background-color: aliceblue;
     margin: 20px auto;
+    font-size: 70px;
+}
+@keyframes infiniteSpin {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-500px);
+    }
+}
+
+.reel__tape.spinning {
+    animation: infiniteSpin 0.3s linear infinite;
 }

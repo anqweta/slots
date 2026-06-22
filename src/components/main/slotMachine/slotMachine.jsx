@@ -11,13 +11,26 @@ let spanClass = [
 ];
 
 export default function SlotMachine({ onSpin }) {
+
+    const symbols = ['🍒', '🍋', '🔔', '⭐', '7️⃣']
     
     const [isSpinning, setIsSpinning] = useState(false);
+    const [ isReel, setReel ] = useState([0, 0, 0]);
+
 
     const spinClick = () => {
+        
         if (isSpinning) {
             return;
         }
+
+        const newReel = [
+           Math.floor(Math.random() * symbols.length) * 100,
+            Math.floor(Math.random() * symbols.length) * 100,
+            Math.floor(Math.random()* symbols.length) * 100
+        ]
+
+        setReel(newReel);
 
         setIsSpinning(true);
 
@@ -41,7 +54,7 @@ export default function SlotMachine({ onSpin }) {
                     <Dots key={index} props={item} />
                 ))}
             </h2>
-            <ReelsBoard isSpinning={isSpinning} />
+            <ReelsBoard positions={isReel} isSpinning={isSpinning} />
             <BetSelector/>
             <button onClick={spinClick} disabled={isSpinning} className="button-spin">
                 SPIN

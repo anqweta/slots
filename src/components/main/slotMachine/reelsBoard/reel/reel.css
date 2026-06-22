@@ -5,7 +5,7 @@
     overflow: hidden;
 }
 .reel__tape {
-    transition: transform 1.5s cubic-bezier(0.1, 0.7, 0.1, 1);
+    transition: transform 0.5s ease-out;
 }
 .reel__item {
     width: 70%; 
@@ -24,5 +24,6 @@
 }
 
 .reel__tape.spinning {
-    animation: infiniteSpin 0.3s linear infinite;
+    animation: infiniteSpin 0.15s linear infinite;
+    transition: none;
 }

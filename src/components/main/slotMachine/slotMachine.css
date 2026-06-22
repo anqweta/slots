@@ -1,0 +1,49 @@
+.slotMachine {
+    width: 650px;
+    height: 500px;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #16162a;
+    border-radius: 50px;
+    border: 1px solid #43392f;
+}
+.title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    color: #f5c542;
+    letter-spacing: 2px;
+    font-size: 20px
+
+}
+.dots {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+.span-red {
+    background-color: #ff4d6d;
+    box-shadow: 0 0 15px 5px rgba(255, 77, 109, 0.7);
+}
+.span-yellow {
+    background-color: #ffcc00;
+    box-shadow: 0 0 15px 5px rgba(255, 204, 0, 0.7);
+}
+.span-blue {
+    background-color: #00e5bc;
+    box-shadow: 0 0 15px 5px rgba(0, 229, 188, 0.7);
+}
+.button-spin {
+    width: 80%;
+    border-radius: 10px;
+    padding: 15px 0px;
+    margin-top: 20px;
+    letter-spacing: 10px;
+    font-weight: 700;
+    border: none;
+    background-color: #f5c542;
+    color: #0a0a12;
+}

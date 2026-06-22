@@ -1,0 +1,11 @@
+.reel {
+    width: 30%;
+    height: 260px;
+    background-color: #16162a;
+}
+.reel__item {
+    width: 70%; 
+    height: 100px !important;
+    background-color: aliceblue;
+    margin: 20px auto;
+}

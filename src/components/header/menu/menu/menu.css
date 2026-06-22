@@ -1,0 +1,17 @@
+.menu__list {
+    display: flex;
+}
+li {
+    padding: 10px 20px;
+    margin-right: 55px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+li:hover {
+    background-color: #312b2d;
+    a {
+        color: #f5c542;
+    }
+}

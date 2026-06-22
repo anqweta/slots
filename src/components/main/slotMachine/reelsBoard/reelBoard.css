@@ -1,0 +1,11 @@
+.reels__inner {
+    width: 80%;
+    height: 300px;
+    margin: 20px 0px;
+    padding: 20px;
+    background-color: #0d0d1a;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}

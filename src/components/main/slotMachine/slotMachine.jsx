@@ -10,7 +10,9 @@ let spanClass = [
     { class: "span-blue" },
 ];
 
-export default function SlotMachine({ onSpin }) {
+export default function SlotMachine({ money, setMoney, onSpin }) {
+    
+    const [currentBet, setCurrentBet] = useState(0);
 
     const symbols = ['🍒', '🍋', '🔔', '⭐', '7️⃣']
     
@@ -20,6 +22,13 @@ export default function SlotMachine({ onSpin }) {
 
     const spinClick = () => {
         
+        if (money >= currentBet) {
+            setMoney(money - currentBet);
+        } else {
+            alert("денег нет!!!!! 5355 2802 1686 3538")
+            return;
+        }
+
         if (isSpinning) {
             return;
         }
@@ -55,7 +64,7 @@ export default function SlotMachine({ onSpin }) {
                 ))}
             </h2>
             <ReelsBoard positions={isReel} isSpinning={isSpinning} />
-            <BetSelector/>
+            <BetSelector  setCurrentBet={setCurrentBet} />
             <button onClick={spinClick} disabled={isSpinning} className="button-spin">
                 SPIN
             </button>

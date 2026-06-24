@@ -14,3 +14,7 @@
     color: #7a7a9a;
     font-size: 16px;
 }
+
+.betSelector>button:active {
+    background-color: pink;
+}

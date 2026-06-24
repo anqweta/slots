@@ -8,9 +8,26 @@ let bets = [
     {bet: 200}
 ]
 
-export default function BetSelector() {
+
+
+export default function BetSelector({setCurrentBet}) {
+
+    const selectBet = (event) => {
+
+        const selectButton = event.target.closest('button');
+
+        if (!selectButton) {
+            return;
+        }
+
+        const selectedBet = +selectButton.textContent;
+
+        setCurrentBet(selectedBet);
+
+    };
+    
     return (
-        <div className="betSelector">
+        <div onClick={selectBet} className="betSelector">
             <span>BET</span>
             {bets.map((item, index) => (
                 <Bet key={index} props={item}/>

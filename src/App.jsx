@@ -4,7 +4,7 @@ import Header from "./components/header/header";
 import Main from "./components/main/main";
 import SideBar from "./components/sideBar/sideBar";
 
-const BASE_MONEY = 100; 
+const BASE_MONEY = 1000; 
 
 function App() {
 

@@ -11,15 +11,47 @@ let spanClass = [
 ];
 
 export default function SlotMachine({ handleMoney, onSpin }) {
+
+  //  const [isWin, setIsWin] = useState(false);
     
     const [currentBet, setCurrentBet] = useState(0);
+    const [moneyWin, setMoneyWin] = useState(0);
 
-    const symbols = ['🍒', '🍋', '🔔', '⭐', '7️⃣']
+   // const symbols = ['🍒', '🍋', '🔔', '⭐', '7️⃣']
     
+    const symbols = [
+        {
+            icon: '🍒',
+            firstMult: 20,
+            secondMult: 2
+        },
+                {
+            icon: '🍋',
+            firstMult: 50,
+            secondMult: 5
+        },
+                        {
+            icon: '🔔',
+            firstMult: 5,
+            secondMult: 0
+        },
+                                {
+            icon: '⭐',
+            firstMult: 10,
+            secondMult: 1
+        },
+                                        {
+            icon: '7️⃣',
+            firstMult: 100,
+            secondMult: 10
+        },
+    ]
+
+    const [isMult, setIsMult] = useState(0);
+    //let currentMult = 0;
     const [isSpinning, setIsSpinning] = useState(false);
-    const [ isReel, setReel ] = useState([0, 0, 0]);
-
-
+    const [isReel, setReel] = useState([0, 0, 0]);
+    
     const spinClick = () => {
 
         if (currentBet === 0) {
@@ -33,10 +65,42 @@ export default function SlotMachine({ handleMoney, onSpin }) {
         }
 
         const newReel = [
-           Math.floor(Math.random() * symbols.length) * 100,
+            Math.floor(Math.random() * symbols.length) * 100,
             Math.floor(Math.random() * symbols.length) * 100,
             Math.floor(Math.random()* symbols.length) * 100
         ]
+
+        const countSame = new Map();
+
+        for (const item of newReel) {
+            countSame.set(item, (countSame.get(item) || 0) + 1);
+        } 
+
+        let maxKey = null;
+        let maxValue = 0;
+
+        if (countSame.size <= 2) {
+           // setIsWin(true);
+            for (const [icon, count] of countSame) {
+                if (count > maxValue) {
+                    maxValue = count;
+                    maxKey = icon / 100;
+                }
+            }
+            console.log("НОМЕР ІКОНКИ " + maxKey);
+            if (countSame.size === 1) {
+                setIsMult(symbols[maxKey].firstMult);
+                console.log("Ви вийграли, ваша множник: " + isMult);
+            } else {
+                setIsMult(symbols[maxKey].secondMult);
+                console.log("Ви вийграли, ваша множник: " + isMult);
+            }
+            console.log("Ви вийграли, ваша множник: " + isMult);
+            setMoneyWin(currentBet * isMult);
+            console.log("Ви вийграли, кількість грошей: " + moneyWin);
+        }
+
+        console.log(countSame);
 
         setReel(newReel);
 

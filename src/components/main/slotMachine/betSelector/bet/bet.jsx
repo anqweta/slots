@@ -1,6 +1,6 @@
-export default function Bet({ props }) {
+export default function Bet({ props, isActive, onClick }) {
     return (
-        <button className="button-choice">
+        <button id={props.id} onClick={onClick}  className={`bet-button ${isActive ? 'active' : ''}`}>
             {props.bet}
         </button>
     )

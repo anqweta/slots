@@ -1,10 +1,10 @@
 import "./main.css";
 import SlotMachine from "./slotMachine/slotMachine"
 
-export default function Main({money, setMoney, onSpin}) {
+export default function Main({handleMoney, onSpin}) {
             return (
                 <main>
-                    <SlotMachine money={money} setMoney={setMoney} onSpin={onSpin}/>
+                    <SlotMachine handleMoney={handleMoney} onSpin={onSpin}/>
                 </main>
             )
 } 

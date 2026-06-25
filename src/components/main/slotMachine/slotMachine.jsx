@@ -10,7 +10,7 @@ let spanClass = [
     { class: "span-blue" },
 ];
 
-export default function SlotMachine({ money, setMoney, onSpin }) {
+export default function SlotMachine({ handleMoney, onSpin }) {
     
     const [currentBet, setCurrentBet] = useState(0);
 
@@ -21,13 +21,12 @@ export default function SlotMachine({ money, setMoney, onSpin }) {
 
 
     const spinClick = () => {
-        
-        if (money >= currentBet) {
-            setMoney(money - currentBet);
-        } else {
-            alert("денег нет!!!!! 5355 2802 1686 3538")
+
+        if (currentBet === 0) {
             return;
         }
+        
+        handleMoney(currentBet);
 
         if (isSpinning) {
             return;

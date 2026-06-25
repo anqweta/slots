@@ -3,8 +3,7 @@ import { useState } from 'react';
 import Header from "./components/header/header";
 import Main from "./components/main/main";
 import SideBar from "./components/sideBar/sideBar";
-
-const BASE_MONEY = 1000; 
+import { BASE_MONEY } from "./constants";
 
 function App() {
 
@@ -12,13 +11,16 @@ function App() {
 
   const [money, setMoney] = useState(BASE_MONEY);
 
-  const handleMoney = (currentBet) => {
+  const handleMoney = (currentBet, winMoney) => {
     if (money >= currentBet) {
       setMoney(prevMoney => prevMoney - currentBet); 
     } else {
             alert("денег нет!!!!! 5355 2802 1686 3538")
             return;
-        }
+    }
+    if (winMoney > 0) {
+    setMoney(prevMoney => prevMoney + winMoney);
+  }
   }
   
   const spin = () => {

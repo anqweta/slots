@@ -3,6 +3,7 @@ import "./slotMachine.css";
 import Dots from "./dots";
 import ReelsBoard from "./reelsBoard/reelsBoard";
 import BetSelector from "./betSelector/betSelector";
+import { SYMBOLS } from "../../../constants";
 
 let spanClass = [
     { class: "span-red" },
@@ -11,41 +12,9 @@ let spanClass = [
 ];
 
 export default function SlotMachine({ handleMoney, onSpin }) {
-
-  //  const [isWin, setIsWin] = useState(false);
     
     const [currentBet, setCurrentBet] = useState(0);
     const [moneyWin, setMoneyWin] = useState(0);
-
-   // const symbols = ['🍒', '🍋', '🔔', '⭐', '7️⃣']
-    
-    const symbols = [
-        {
-            icon: '🍒',
-            firstMult: 20,
-            secondMult: 2
-        },
-                {
-            icon: '🍋',
-            firstMult: 50,
-            secondMult: 5
-        },
-                        {
-            icon: '🔔',
-            firstMult: 5,
-            secondMult: 0
-        },
-                                {
-            icon: '⭐',
-            firstMult: 10,
-            secondMult: 1
-        },
-                                        {
-            icon: '7️⃣',
-            firstMult: 100,
-            secondMult: 10
-        },
-    ]
 
     const [isMult, setIsMult] = useState(0);
     //let currentMult = 0;
@@ -58,16 +27,16 @@ export default function SlotMachine({ handleMoney, onSpin }) {
             return;
         }
         
-        handleMoney(currentBet);
+        handleMoney(currentBet, 0);
 
         if (isSpinning) {
             return;
         }
 
         const newReel = [
-            Math.floor(Math.random() * symbols.length) * 100,
-            Math.floor(Math.random() * symbols.length) * 100,
-            Math.floor(Math.random()* symbols.length) * 100
+            Math.floor(Math.random() * SYMBOLS.length) * 100,
+            Math.floor(Math.random() * SYMBOLS.length) * 100,
+            Math.floor(Math.random()* SYMBOLS.length) * 100
         ]
 
         const countSame = new Map();
@@ -89,15 +58,16 @@ export default function SlotMachine({ handleMoney, onSpin }) {
             }
             console.log("НОМЕР ІКОНКИ " + maxKey);
             if (countSame.size === 1) {
-                setIsMult(symbols[maxKey].firstMult);
+                setIsMult(SYMBOLS[maxKey].firstMult);
                 console.log("Ви вийграли, ваша множник: " + isMult);
             } else {
-                setIsMult(symbols[maxKey].secondMult);
+                setIsMult(SYMBOLS[maxKey].secondMult);
                 console.log("Ви вийграли, ваша множник: " + isMult);
             }
             console.log("Ви вийграли, ваша множник: " + isMult);
             setMoneyWin(currentBet * isMult);
             console.log("Ви вийграли, кількість грошей: " + moneyWin);
+            handleMoney(0, moneyWin);
         }
 
         console.log(countSame);

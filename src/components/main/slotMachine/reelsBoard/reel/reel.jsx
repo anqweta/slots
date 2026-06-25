@@ -1,8 +1,9 @@
-    import "./reel.css";
+import "./reel.css";
+import { SYMBOLS_RENDER } from "../../../../../constants";
 
-    const symbols = ['🍒', '🍋', '🔔', '⭐', '7️⃣'];
+   // const symbols = ['🍒', '🍋', '🔔', '⭐', '7️⃣'];
 
-    const double_symbols = [...symbols, ...symbols];
+    const double_symbols = [...SYMBOLS_RENDER, ...SYMBOLS_RENDER];
 
     export default function Reel({stopPosition, isSpinning}) {
         return (

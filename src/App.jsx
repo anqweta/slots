@@ -13,9 +13,6 @@ function App() {
   const handleMoney = (amount) => {
     if (money >= amount) {
       setMoney((prevMoney) => prevMoney - amount);
-    } else {
-      alert("денег нет!!!!! 5355 2802 1686 3538");
-      return;
     }
   };
 
@@ -26,7 +23,7 @@ function App() {
   return (
     <div className="wrapper">
       <Header money={money} />
-      <Main handleMoney={handleMoney} onSpin={spin} />
+      <Main money={money} handleMoney={handleMoney} onSpin={spin} />
       <SideBar gameCount={gameCount} />
     </div>
   );

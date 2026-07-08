@@ -25,3 +25,4 @@ export const calcMoneyWin = (currentBet, countSame, SYMBOLS) => {
   const moneyWin = currentBet * currentMult;
   return { moneyWin, currentMult };
 };
+ 

@@ -10,7 +10,7 @@
 .reel__item {
     width: 70%; 
     height: 100px !important;
-    margin: 20px auto;
+    margin: auto;
     font-size: 70px;
 }
 @keyframes infiniteSpin {
@@ -27,3 +27,4 @@
     animation: infiniteSpin 0.15s linear infinite;
     transition: none;
 }
+

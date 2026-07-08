@@ -12,16 +12,19 @@ let spanClass = [
   { class: "span-blue" },
 ];
 
-export default function SlotMachine({ handleMoney, onSpin }) {
+export default function SlotMachine({ money, handleMoney, onSpin }) {
   const [currentBet, setCurrentBet] = useState(0);
-  const [moneyWin, setMoneyWin] = useState(0);
-
-  const [isMult, setIsMult] = useState(0);
-
   const [isSpinning, setIsSpinning] = useState(false);
   const [isReel, setReel] = useState([0, 0, 0]);
+  const [isWin, setWin] = useState(false);
 
   const spinClick = () => {
+    setWin(false);
+    if (money < currentBet) {
+      alert("Денег нет!");
+      return;
+    }
+
     if (currentBet === 0) {
       return;
     }
@@ -32,56 +35,14 @@ export default function SlotMachine({ handleMoney, onSpin }) {
       return;
     }
 
-    const newReel = [
-      Math.floor(Math.random() * SYMBOLS.length),
-      Math.floor(Math.random() * SYMBOLS.length),
-      Math.floor(Math.random() * SYMBOLS.length),
-    ];
+    const findIcon = () => Math.floor(Math.random() * SYMBOLS.length);
+
+    const newReel = Array.from({ length: 3 }, () => findIcon());
 
     const countSame = new Map();
 
     for (const item of newReel) {
       countSame.set(item, (countSame.get(item) || 0) + 1);
-    }
-
-    /*let maxKey = null;
-      let maxValue = 0;
-      let currentMult;
-      if (countSame.size <= 2) {
-        // setIsWin(true);
-        for (const [icon, count] of countSame) {
-          if (count > maxValue) {
-            maxValue = count;
-            maxKey = icon;
-          }
-        }
-        console.log("НОМЕР ІКОНКИ " + maxKey);
-        if (countSame.size === 1) {
-          currentMult = SYMBOLS[maxKey].firstMult;
-          console.log("Ви вийграли, ваша множник: " + currentMult);
-        } else {
-          currentMult = SYMBOLS[maxKey].secondMult;
-          console.log("Ви вийграли, ваша множник: " + currentMult);
-        }
-        console.log("Ви вийграли, ваша множник: " + isMult);
-        const moneyWin = calcMoneyWin(currentBet, currentMult);
-        console.log("Ви вийграли, кількість грошей: " + moneyWin);
-        handleMoney(moneyWin);
-        setIsMult(currentMult);
-        setMoneyWin(moneyWin);
-      } else {
-        setIsMult(0);
-      } */
-
-    if (countSame.size <= 2) {
-      // setIsWin(true);
-      const result = calcMoneyWin(currentBet, countSame, SYMBOLS);
-      console.log("Ви вийграли, ФІНАЛЬНА кількість грошей: " + result.moneyWin);
-      handleMoney(moneyWin);
-      setIsMult(result.currentMult);
-      setMoneyWin(-result.moneyWin);
-    } else {
-      setIsMult(0);
     }
 
     console.log(countSame);
@@ -96,6 +57,13 @@ export default function SlotMachine({ handleMoney, onSpin }) {
 
     setTimeout(() => {
       setIsSpinning(false);
+      const isWin = countSame.size <= 2;
+      if (isWin) {
+        setWin(isWin);
+        const { moneyWin } = calcMoneyWin(currentBet, countSame, SYMBOLS);
+        console.log("Ви вийграли, ФІНАЛЬНА кількість грошей: " + moneyWin);
+        handleMoney(-moneyWin);
+      }
     }, 2000);
   };
 
@@ -110,7 +78,7 @@ export default function SlotMachine({ handleMoney, onSpin }) {
           <Dots key={index} props={item} />
         ))}
       </h2>
-      <ReelsBoard positions={isReel} isSpinning={isSpinning} />
+      <ReelsBoard positions={isReel} isSpinning={isSpinning} isWin={isWin} />
       <BetSelector setCurrentBet={setCurrentBet} />
       <button onClick={spinClick} disabled={isSpinning} className="button-spin">
         SPIN

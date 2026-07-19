@@ -11,8 +11,17 @@ let spanClass = [
   { class: "span-yellow" },
   { class: "span-blue" },
 ];
+let countWin = 0;
 
-export default function SlotMachine({ money, handleMoney, onSpin }) {
+export default function SlotMachine({
+  handleMoneyWin,
+  money,
+  handleMoney,
+  onSpin,
+  handlePercentWin,
+  handleIcon,
+  addStatisticElement,
+}) {
   const [currentBet, setCurrentBet] = useState(0);
   const [isSpinning, setIsSpinning] = useState(false);
   const [isReel, setReel] = useState([0, 0, 0]);
@@ -39,6 +48,8 @@ export default function SlotMachine({ money, handleMoney, onSpin }) {
 
     const newReel = Array.from({ length: 3 }, () => findIcon());
 
+    console.log("ІНДЕКСИ ІКОНОК: " + newReel);
+
     const countSame = new Map();
 
     for (const item of newReel) {
@@ -55,16 +66,44 @@ export default function SlotMachine({ money, handleMoney, onSpin }) {
       onSpin();
     }
 
+    //let betStat = currentBet;
+    let result = [
+      SYMBOLS[newReel[0]].icon,
+      SYMBOLS[newReel[1]].icon,
+      SYMBOLS[newReel[2]].icon,
+    ];
     setTimeout(() => {
+      handleIcon(
+        SYMBOLS[newReel[0]].icon,
+        SYMBOLS[newReel[1]].icon,
+        SYMBOLS[newReel[2]].icon,
+      );
+      let moneyWinStat = 0;
       setIsSpinning(false);
-      const isWin = countSame.size <= 2;
-      if (isWin) {
-        setWin(isWin);
+      const isWinStat = countSame.size <= 2;
+      console.log(isWinStat + "ЧИ Є ПЕРЕМОГА");
+      if (isWinStat) {
+        setWin(isWinStat);
         const { moneyWin } = calcMoneyWin(currentBet, countSame, SYMBOLS);
         console.log("Ви вийграли, ФІНАЛЬНА кількість грошей: " + moneyWin);
+        handleMoneyWin(moneyWin);
         handleMoney(-moneyWin);
+        moneyWinStat = moneyWin;
+        countWin++;
       }
-    }, 2000);
+      const balanceStat = money - currentBet + moneyWinStat;
+      console.log("КІЛЬКІСТЬ ПЕРЕМОГ: " + countWin);
+      handlePercentWin(countWin);
+      addStatisticElement(
+        isWinStat,
+        result,
+        currentBet,
+        moneyWinStat,
+        balanceStat,
+      );
+    }, 5200);
+
+    console.log(isWin + "RESULT GAME");
   };
 
   return (

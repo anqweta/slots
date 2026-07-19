@@ -1,10 +1,26 @@
 import "./main.css";
 import SlotMachine from "./slotMachine/slotMachine";
 
-export default function Main({ money, handleMoney, onSpin }) {
+export default function Main({
+  handleMoneyWin,
+  money,
+  handleMoney,
+  onSpin,
+  handlePercentWin,
+  handleIcon,
+  addStatisticElement,
+}) {
   return (
     <main>
-      <SlotMachine money={money} handleMoney={handleMoney} onSpin={onSpin} />
+      <SlotMachine
+        handleMoneyWin={handleMoneyWin}
+        money={money}
+        handleMoney={handleMoney}
+        onSpin={onSpin}
+        handlePercentWin={handlePercentWin}
+        handleIcon={handleIcon}
+        addStatisticElement={addStatisticElement}
+      />
     </main>
   );
 }

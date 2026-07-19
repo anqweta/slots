@@ -2,4 +2,7 @@ aside {
     width: 30%;
     height: 900px;
     background-color: #16162a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

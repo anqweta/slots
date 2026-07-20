@@ -1,6 +1,16 @@
 import "./main.css";
 import SlotMachine from "./slotMachine/slotMachine";
 
+interface MainProps {
+  handleMoneyWin: (moneyWin: number) => void;
+  money: number;
+  handleMoney: (amount: number) => number;
+  onSpin: () => void;
+  handlePercentWin: (countWin: number) => void;
+  handleIcon: (firstIcon: string, secondIcon: string, thirdIcon: string) => void;
+  addStatisticElement: (result: boolean, icon: string[], bet: number, moneyWin: number, money: number) => void;
+}
+
 export default function Main({
   handleMoneyWin,
   money,
@@ -9,7 +19,7 @@ export default function Main({
   handlePercentWin,
   handleIcon,
   addStatisticElement,
-}) {
+}: MainProps) {
   return (
     <main>
       <SlotMachine

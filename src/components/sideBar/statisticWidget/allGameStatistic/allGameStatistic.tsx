@@ -1,6 +1,11 @@
 import "./allGameStatistic.css";
+import { StatisticItem } from "../../../../App";
 
-export default function AllGameStatistic({ props }) {
+interface AllGameStatisticProps {
+  props: StatisticItem;
+}
+
+export default function AllGameStatistic({ props }: AllGameStatisticProps) {
   if (props.numberGame === 0) {
     return;
   }

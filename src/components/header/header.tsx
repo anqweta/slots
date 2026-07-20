@@ -1,7 +1,11 @@
 import Menu from "./menu/menu/menu";
 import "./header.css"
 
-export default function Header({money}) {
+interface HeaderProps {
+    money: number;
+}
+
+export default function Header({money}: HeaderProps) {
     return (
         <header>
             <span className="logo">LUCKY<span>SPIN</span></span>

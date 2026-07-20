@@ -1,4 +1,11 @@
-export const BASE_MONEY = 1000;
+export interface SymbolItem {
+  name: string;
+  icon: string;
+  firstMult: number;
+  secondMult: number;
+}
+
+export const BASE_MONEY: number = 1000;
 
 /* const symbolsRender = new Map([
   ["cherry", "🍒"],
@@ -10,7 +17,7 @@ export const BASE_MONEY = 1000;
 
 //export const SYMBOLS_RENDER = ["🍒", "🍋", "🔔", "⭐", "7️⃣"];
 
-export const SYMBOLS = [
+export const SYMBOLS: SymbolItem[] = [
   {
     name: "cherry",
     icon: "🍒",

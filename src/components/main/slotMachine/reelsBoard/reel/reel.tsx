@@ -1,15 +1,21 @@
 import "./reel.css";
-import { SYMBOLS } from "../../../../../constants";
+import { SYMBOLS, SymbolItem } from "../../../../../constants";
 
-const tapeSymbols = Array(12).fill(SYMBOLS).flat();
-const EXTRA_SPINS = 50;
+const tapeSymbols: SymbolItem[] = Array(12).fill(SYMBOLS).flat();
+const EXTRA_SPINS: number = 50;
 
-export default function Reel({ stopIndex, isSpinning, delay }) {
-  const ICON_HEIGHT = 100;
-  const OFFSET = 100;
-  const safeStopIndex = SYMBOLS.length + stopIndex;
-  const stopPosition = safeStopIndex * ICON_HEIGHT - OFFSET;
-  const spinPosition = (EXTRA_SPINS + safeStopIndex) * ICON_HEIGHT - OFFSET;
+interface ReelProps {
+  stopIndex: number;
+  isSpinning: boolean;
+  delay: number;
+}
+
+export default function Reel({ stopIndex, isSpinning, delay }: ReelProps) {
+  const ICON_HEIGHT: number = 100;
+  const OFFSET: number = 100;
+  const safeStopIndex: number = SYMBOLS.length + stopIndex;
+  const stopPosition: number = safeStopIndex * ICON_HEIGHT - OFFSET;
+  const spinPosition: number = (EXTRA_SPINS + safeStopIndex) * ICON_HEIGHT - OFFSET;
   return (
     <div className="reel">
       <div

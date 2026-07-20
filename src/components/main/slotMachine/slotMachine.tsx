@@ -6,12 +6,26 @@ import BetSelector from "./betSelector/betSelector";
 import { SYMBOLS } from "../../../constants";
 import { calcMoneyWin } from "../../../utils/helper";
 
-let spanClass = [
+interface SpanClassItem {
+  class: string;
+}
+
+let spanClass: SpanClassItem[] = [
   { class: "span-red" },
   { class: "span-yellow" },
   { class: "span-blue" },
 ];
-let countWin = 0;
+let countWin: number = 0;
+
+interface SlotMachineProps {
+  handleMoneyWin: (moneyWin: number) => void;
+  money: number;
+  handleMoney: (amount: number) => number;
+  onSpin: () => void;
+  handlePercentWin: (countWin: number) => void;
+  handleIcon: (firstIcon: string, secondIcon: string, thirdIcon: string) => void;
+  addStatisticElement: (result: boolean, icon: string[], bet: number, moneyWin: number, money: number) => void;
+}
 
 export default function SlotMachine({
   handleMoneyWin,
@@ -21,13 +35,13 @@ export default function SlotMachine({
   handlePercentWin,
   handleIcon,
   addStatisticElement,
-}) {
-  const [currentBet, setCurrentBet] = useState(0);
-  const [isSpinning, setIsSpinning] = useState(false);
-  const [isReel, setReel] = useState([0, 0, 0]);
-  const [isWin, setWin] = useState(false);
+}: SlotMachineProps) {
+  const [currentBet, setCurrentBet] = useState<number>(0);
+  const [isSpinning, setIsSpinning] = useState<boolean>(false);
+  const [isReel, setReel] = useState<number[]>([0, 0, 0]);
+  const [isWin, setWin] = useState<boolean>(false);
 
-  const spinClick = () => {
+  const spinClick = (): void => {
     setWin(false);
     if (money < currentBet) {
       alert("Денег нет!");
@@ -44,13 +58,13 @@ export default function SlotMachine({
       return;
     }
 
-    const findIcon = () => Math.floor(Math.random() * SYMBOLS.length);
+    const findIcon = (): number => Math.floor(Math.random() * SYMBOLS.length);
 
-    const newReel = Array.from({ length: 3 }, () => findIcon());
+    const newReel: number[] = Array.from({ length: 3 }, () => findIcon());
 
     console.log("ІНДЕКСИ ІКОНОК: " + newReel);
 
-    const countSame = new Map();
+    const countSame: Map<number, number> = new Map<number, number>();
 
     for (const item of newReel) {
       countSame.set(item, (countSame.get(item) || 0) + 1);
@@ -67,7 +81,7 @@ export default function SlotMachine({
     }
 
     //let betStat = currentBet;
-    let result = [
+    let result: string[] = [
       SYMBOLS[newReel[0]].icon,
       SYMBOLS[newReel[1]].icon,
       SYMBOLS[newReel[2]].icon,
@@ -78,9 +92,9 @@ export default function SlotMachine({
         SYMBOLS[newReel[1]].icon,
         SYMBOLS[newReel[2]].icon,
       );
-      let moneyWinStat = 0;
+      let moneyWinStat: number = 0;
       setIsSpinning(false);
-      const isWinStat = countSame.size <= 2;
+      const isWinStat: boolean = countSame.size <= 2;
       console.log(isWinStat + "ЧИ Є ПЕРЕМОГА");
       if (isWinStat) {
         setWin(isWinStat);
@@ -91,7 +105,7 @@ export default function SlotMachine({
         moneyWinStat = moneyWin;
         countWin++;
       }
-      const balanceStat = money - currentBet + moneyWinStat;
+      const balanceStat: number = money - currentBet + moneyWinStat;
       console.log("КІЛЬКІСТЬ ПЕРЕМОГ: " + countWin);
       handlePercentWin(countWin);
       addStatisticElement(

@@ -1,11 +1,17 @@
 import "./reelBoard.css";
 import Reel from "./reel/reel";
 
-export const ICON_HEIGHT = 100;
+export const ICON_HEIGHT: number = 100;
 
 //const getPixels = (position) => position * ICON_HEIGHT;
 
-export default function ReelsBoard({ positions, isSpinning, isWin }) {
+interface ReelsBoardProps {
+  positions: number[];
+  isSpinning: boolean;
+  isWin: boolean;
+}
+
+export default function ReelsBoard({ positions, isSpinning, isWin }: ReelsBoardProps) {
   /*let reelPositions = positions.map((position) => ({
     stopPosition: getPixels(position),
   })); */

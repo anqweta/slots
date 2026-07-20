@@ -1,7 +1,11 @@
 import "./menu.css";
 import MenuItem from "./menuItem/menuItem"
 
-let MenuItems = [
+interface MenuItemType {
+    link: string;
+}
+
+let MenuItems: MenuItemType[] = [
     { link: "Slots" },
     { link: "Shop" },
     {link: "Top up"}

@@ -1,0 +1,11 @@
+.statistic {
+    width: 90%;
+    padding: 20px;
+    margin-top: 20px;
+    gap: 20px;
+}
+.statistic__info {
+    background-color: #1f1e30;
+    padding: 10px;
+    border-radius: 10px;
+}

@@ -1,0 +1,17 @@
+.item-stat {
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 15px;
+    font-size: 24px
+}
+.item-green {
+    background-color: rgb(0, 83, 0);
+}
+.item-red {
+    background-color: rgb(90, 0, 0);
+}
+.item-stat > p > span {
+    color: white;
+    font-size: 25px;
+    font-weight: 700;
+}

@@ -5,14 +5,6 @@ import { StatisticItem } from "../../../App";
 import { useContext } from "react";
 import GlobalContext from "../../../providers/nohatesuperklasskod";
 
-/* interface StatisticWidgetProps {
-  percentWin: number;
-  moneyWin: number;
-  gameCount: number;
-  icon: number[] | string[];
-  statistic: StatisticItem[];
-}*/
-
 interface StatisticInfoItem {
   title: string;
   number: number | string | number[] | string[];

@@ -18,16 +18,6 @@ let spanClass: SpanClassItem[] = [
 ];
 let countWin: number = 0;
 
-/*interface SlotMachineProps {
-  handleMoneyWin: (moneyWin: number) => void;
-  money: number;
-  handleMoney: (amount: number) => number;
-  onSpin: () => void;
-  handlePercentWin: (countWin: number) => void;
-  handleIcon: (firstIcon: string, secondIcon: string, thirdIcon: string) => void;
-  addStatisticElement: (result: boolean, icon: string[], bet: number, moneyWin: number, money: number) => void;
-}*/
-
 export default function SlotMachine() {
   const [currentBet, setCurrentBet] = useState<number>(0);
   const [isSpinning, setIsSpinning] = useState<boolean>(false);

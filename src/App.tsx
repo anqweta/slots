@@ -89,17 +89,16 @@ function App() {
       handlePercentWin: handlePercentWin,
       handleIcon: handleIcon,
       addStatisticElement: addStatisticElement,
-      percentWin
+      percentWin: percentWin,
+      moneyWin: moneyWin,
+      gameCount: gameCount,
+      icon: icon,
+      statistic: statistic
     }}>
   <div className="wrapper">
       <Header />
       <Main/>
       <SideBar
-        percentWin={percentWin}
-        moneyWin={moneyWin}
-        gameCount={gameCount}
-        icon={icon}
-        statistic={statistic}
       />
     </div>
     </GlobalContext.Provider>

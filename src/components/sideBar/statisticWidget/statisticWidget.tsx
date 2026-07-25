@@ -2,27 +2,26 @@ import InfoItem from "./infoItem/infoItem";
 import AllGameStatistic from "./allGameStatistic/allGameStatistic";
 import "./statisticWidget.css";
 import { StatisticItem } from "../../../App";
+import { useContext } from "react";
+import GlobalContext from "../../../providers/nohatesuperklasskod";
 
-interface StatisticWidgetProps {
+/* interface StatisticWidgetProps {
   percentWin: number;
   moneyWin: number;
   gameCount: number;
   icon: number[] | string[];
   statistic: StatisticItem[];
-}
+}*/
 
 interface StatisticInfoItem {
   title: string;
   number: number | string | number[] | string[];
-}
+} 
 
-export default function StatisticWidget({
-  percentWin,
-  moneyWin,
-  gameCount,
-  icon,
-  statistic,
-}: StatisticWidgetProps) {
+export default function StatisticWidget() {
+
+  const { gameCount, percentWin, icon, statistic } = useContext(GlobalContext);
+
   let statisticInfo: StatisticInfoItem[] = [
     { title: "Counf of game: ", number: gameCount },
     // { title: "Last win: ", number: moneyWin },

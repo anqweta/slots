@@ -62,8 +62,7 @@ export default function SlotMachine() {
     if (onSpin) {
       onSpin();
     }
-
-    //let betStat = currentBet;
+    
     let result: string[] = [
       SYMBOLS[newReel[0]].icon,
       SYMBOLS[newReel[1]].icon,

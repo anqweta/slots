@@ -1,9 +1,8 @@
 import InfoItem from "./infoItem/infoItem";
 import AllGameStatistic from "./allGameStatistic/allGameStatistic";
 import "./statisticWidget.css";
-import { StatisticItem } from "../../../App";
 import { useContext } from "react";
-import GlobalContext from "../../../providers/nohatesuperklasskod";
+import StatisticContext from "../../../providers/StatisticContext";
 
 interface StatisticInfoItem {
   title: string;
@@ -12,7 +11,7 @@ interface StatisticInfoItem {
 
 export default function StatisticWidget() {
 
-  const { gameCount, percentWin, icon, statistic } = useContext(GlobalContext);
+  const { gameCount, percentWin, icon, statistic } = useContext(StatisticContext);
 
   let statisticInfo: StatisticInfoItem[] = [
     { title: "Counf of game: ", number: gameCount },

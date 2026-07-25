@@ -1,15 +1,11 @@
 import Menu from "./menu/menu/menu";
 import "./header.css"
 import { useContext } from "react";
-import GlobalContext from "../../providers/nohatesuperklasskod";
-
-interface HeaderProps {
-    money: number;
-}
+import MoneyLogicContext from "../../providers/MoneyLogicContext";
 
 export default function Header() {
 
-    const {money} = useContext(GlobalContext);
+    const {money} = useContext(MoneyLogicContext);
 
     return (
         <header>

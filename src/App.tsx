@@ -4,7 +4,8 @@ import Header from "./components/header/header";
 import Main from "./components/main/main";
 import SideBar from "./components/sideBar/sideBar";
 import { BASE_MONEY } from "./constants";
-import GlobalContext from "./providers/nohatesuperklasskod"
+import StatisticContext from "./providers/StatisticContext"
+import MoneyLogicContext from "./providers/MoneyLogicContext";
 
 export interface StatisticItem {
   numberGame: number;
@@ -81,19 +82,21 @@ function App() {
   };
 
   return (
-    <GlobalContext.Provider value={{
+    <StatisticContext.Provider value={{
+      addStatisticElement: addStatisticElement,
+      percentWin: percentWin,
+      moneyWin: moneyWin,
+      gameCount: gameCount,
+      icon: icon,
+      statistic: statistic }}>
+      <MoneyLogicContext.Provider value={{
       money: money,
       handleMoneyWin: handleMoneyWin,
       handleMoney: handleMoney,
       onSpin: spin, 
       handlePercentWin: handlePercentWin,
       handleIcon: handleIcon,
-      addStatisticElement: addStatisticElement,
-      percentWin: percentWin,
-      moneyWin: moneyWin,
-      gameCount: gameCount,
-      icon: icon,
-      statistic: statistic
+
     }}>
   <div className="wrapper">
       <Header />
@@ -101,8 +104,11 @@ function App() {
       <SideBar
       />
     </div>
-    </GlobalContext.Provider>
+    </MoneyLogicContext.Provider>
+    </StatisticContext.Provider>
+  
   );
 }
+
 
 export default App;

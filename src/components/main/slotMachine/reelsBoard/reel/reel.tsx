@@ -21,10 +21,7 @@ export default function Reel({ stopIndex, isSpinning, delay }: ReelProps) {
       <div
         className={`reel__tape ${isSpinning ? "spinning" : ""}`}
         style={{
-          // Коли isSpinning = true, їдемо на spinPosition. Коли false - скидаємо на stopPosition
           transform: `translateY(-${isSpinning ? spinPosition : stopPosition}px)`,
-
-          // Додаємо затримку тільки під час обертання (щоб скидання було миттєвим)
           transitionDelay: isSpinning ? `${delay}s` : "0s",
         }}
       >

@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./slotMachine.css";
 import Dots from "./dots";
 import ReelsBoard from "./reelsBoard/reelsBoard";
 import BetSelector from "./betSelector/betSelector";
 import { SYMBOLS } from "../../../constants";
 import { calcMoneyWin } from "../../../utils/helper";
+import MoneyLogicContext from "../../../providers/MoneyLogicContext";
+import StatisticContext from "../../../providers/StatisticContext";
 
 interface SpanClassItem {
   class: string;
@@ -17,30 +19,13 @@ let spanClass: SpanClassItem[] = [
 ];
 let countWin: number = 0;
 
-interface SlotMachineProps {
-  handleMoneyWin: (moneyWin: number) => void;
-  money: number;
-  handleMoney: (amount: number) => number;
-  onSpin: () => void;
-  handlePercentWin: (countWin: number) => void;
-  handleIcon: (firstIcon: string, secondIcon: string, thirdIcon: string) => void;
-  addStatisticElement: (result: boolean, icon: string[], bet: number, moneyWin: number, money: number) => void;
-}
-
-export default function SlotMachine({
-  handleMoneyWin,
-  money,
-  handleMoney,
-  onSpin,
-  handlePercentWin,
-  handleIcon,
-  addStatisticElement,
-}: SlotMachineProps) {
+export default function SlotMachine() {
   const [currentBet, setCurrentBet] = useState<number>(0);
   const [isSpinning, setIsSpinning] = useState<boolean>(false);
   const [isReel, setReel] = useState<number[]>([0, 0, 0]);
   const [isWin, setWin] = useState<boolean>(false);
-
+  const { money, handleMoneyWin, handleMoney, onSpin, handlePercentWin, handleIcon } = useContext(MoneyLogicContext);
+  const { addStatisticElement } = useContext(StatisticContext);
   const spinClick = (): void => {
     setWin(false);
     if (money < currentBet) {
@@ -79,8 +64,6 @@ export default function SlotMachine({
     if (onSpin) {
       onSpin();
     }
-
-    //let betStat = currentBet;
     let result: string[] = [
       SYMBOLS[newReel[0]].icon,
       SYMBOLS[newReel[1]].icon,

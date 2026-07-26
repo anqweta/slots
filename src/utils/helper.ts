@@ -1,9 +1,5 @@
 import { SymbolItem } from "../constants";
 
-/*export const calcMoneyWin = (currentBet, currentMult) => {
-  return currentBet * currentMult;
-}; */
-
 export const calcMoneyWin = (
   currentBet: number,
   countSame: Map<number, number>,

@@ -1,11 +1,12 @@
 import Menu from "./menu/menu/menu";
 import "./header.css"
+import { useContext } from "react";
+import MoneyLogicContext from "../../providers/MoneyLogicContext";
 
-interface HeaderProps {
-    money: number;
-}
+export default function Header() {
 
-export default function Header({money}: HeaderProps) {
+    const {money} = useContext(MoneyLogicContext);
+
     return (
         <header>
             <span className="logo">LUCKY<span>SPIN</span></span>

@@ -7,16 +7,6 @@ export interface SymbolItem {
 
 export const BASE_MONEY: number = 1000;
 
-/* const symbolsRender = new Map([
-  ["cherry", "🍒"],
-  ["lemon", "🍋"],
-  ["bell", "🔔"],
-  ["star", "⭐"],
-  ["seven", "7️⃣"],
-]); */
-
-//export const SYMBOLS_RENDER = ["🍒", "🍋", "🔔", "⭐", "7️⃣"];
-
 export const SYMBOLS: SymbolItem[] = [
   {
     name: "cherry",

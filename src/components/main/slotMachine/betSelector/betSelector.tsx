@@ -21,27 +21,6 @@ interface BetSelectorProps {
 export default function BetSelector({ setCurrentBet }: BetSelectorProps) {
     
     const [activeId, setActiveId] = useState<number>(0);
-
-   /* const selectBet = (event) => {
-
-        const selectButton = event.target.closest('button');
-
-        if (!selectButton) {
-            return;
-        }
-
-        setActiveId(selectButton.event.target.id);
-
-        if (activeId === selectButton.id) {
-            selectButton.classList.add('active');
-        }
-
-        const selectedBet = +selectButton.textContent;
-
-        setCurrentBet(selectedBet);
-
-    }; */
-
     const selectBet = (id: number, betAmount: number): void => {
         setActiveId(id);
         setCurrentBet(betAmount);

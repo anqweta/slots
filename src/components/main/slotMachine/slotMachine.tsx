@@ -83,7 +83,7 @@ export default function SlotMachine() {
         setWin(isWinStat);
         const { moneyWin } = calcMoneyWin(currentBet, countSame, SYMBOLS);
         console.log("Ви вийграли, ФІНАЛЬНА кількість грошей: " + moneyWin);
-        handleMoneyWin({moneyWin});
+        handleMoneyWin({amount: moneyWin});
         handleMoney(-moneyWin);
         moneyWinStat = moneyWin;
         countWin++;

@@ -6,6 +6,7 @@ import SideBar from "./components/sideBar/sideBar";
 import { BASE_MONEY } from "./constants";
 import StatisticContext from "./providers/StatisticContext"
 import MoneyLogicContext from "./providers/MoneyLogicContext";
+import { Counter } from "./features/counter/Counter";
 
 export interface StatisticItem {
   numberGame: number;
@@ -102,7 +103,8 @@ function App() {
       <Header />
       <Main/>
       <SideBar
-      />
+          />
+      <Counter></Counter>
     </div>
     </MoneyLogicContext.Provider>
     </StatisticContext.Provider>

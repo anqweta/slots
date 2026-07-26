@@ -7,7 +7,7 @@ import { SYMBOLS } from "../../../constants";
 import { calcMoneyWin } from "../../../utils/helper";
 import MoneyLogicContext from "../../../providers/MoneyLogicContext";
 import StatisticContext from "../../../providers/StatisticContext";
-
+import { handleMoneyWin } from "../../../features/moneyLogic/moneyLogic";
 interface SpanClassItem {
   class: string;
 }
@@ -24,7 +24,7 @@ export default function SlotMachine() {
   const [isSpinning, setIsSpinning] = useState<boolean>(false);
   const [isReel, setReel] = useState<number[]>([0, 0, 0]);
   const [isWin, setWin] = useState<boolean>(false);
-  const { money, handleMoneyWin, handleMoney, onSpin, handlePercentWin, handleIcon } = useContext(MoneyLogicContext);
+  const { money, handleMoney, onSpin, handlePercentWin, handleIcon } = useContext(MoneyLogicContext);
   const { addStatisticElement } = useContext(StatisticContext);
   const spinClick = (): void => {
     setWin(false);
@@ -83,7 +83,7 @@ export default function SlotMachine() {
         setWin(isWinStat);
         const { moneyWin } = calcMoneyWin(currentBet, countSame, SYMBOLS);
         console.log("Ви вийграли, ФІНАЛЬНА кількість грошей: " + moneyWin);
-        handleMoneyWin(moneyWin);
+        handleMoneyWin({moneyWin});
         handleMoney(-moneyWin);
         moneyWinStat = moneyWin;
         countWin++;

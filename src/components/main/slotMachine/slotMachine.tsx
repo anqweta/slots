@@ -1,13 +1,15 @@
 import { useContext, useState } from "react";
 import "./slotMachine.css";
 import Dots from "./dots";
+import type { RootState } from "../../../app/store";
 import ReelsBoard from "./reelsBoard/reelsBoard";
 import BetSelector from "./betSelector/betSelector";
 import { SYMBOLS } from "../../../constants";
 import { calcMoneyWin } from "../../../utils/helper";
-import MoneyLogicContext from "../../../providers/MoneyLogicContext";
 import StatisticContext from "../../../providers/StatisticContext";
-import { handleMoneyWin } from "../../../features/moneyLogic/moneyLogic";
+import { handleMoneyWin, handleIcon, handlePercentWin, handleMoney, onSpin } from "../../../features/moneyLogic/moneyLogicSlice";
+import { useSelector } from "react-redux";
+import { moneySelector } from "../../../features/moneyLogic/moneyLogicSlice";
 interface SpanClassItem {
   class: string;
 }
@@ -20,11 +22,11 @@ let spanClass: SpanClassItem[] = [
 let countWin: number = 0;
 
 export default function SlotMachine() {
+  const money = useSelector(moneySelector);
   const [currentBet, setCurrentBet] = useState<number>(0);
   const [isSpinning, setIsSpinning] = useState<boolean>(false);
   const [isReel, setReel] = useState<number[]>([0, 0, 0]);
   const [isWin, setWin] = useState<boolean>(false);
-  const { money, handleMoney, onSpin, handlePercentWin, handleIcon } = useContext(MoneyLogicContext);
   const { addStatisticElement } = useContext(StatisticContext);
   const spinClick = (): void => {
     setWin(false);
@@ -37,7 +39,7 @@ export default function SlotMachine() {
       return;
     }
 
-    handleMoney(currentBet);
+    handleMoney({amount: currentBet});
 
     if (isSpinning) {
       return;
@@ -71,9 +73,9 @@ export default function SlotMachine() {
     ];
     setTimeout(() => {
       handleIcon(
-        SYMBOLS[newReel[0]].icon,
-        SYMBOLS[newReel[1]].icon,
-        SYMBOLS[newReel[2]].icon,
+        {firstIcon :SYMBOLS[newReel[0]].icon,
+        secondIcon:   SYMBOLS[newReel[1]].icon,
+        thirdIcon: SYMBOLS[newReel[2]].icon,}
       );
       let moneyWinStat: number = 0;
       setIsSpinning(false);
@@ -83,14 +85,14 @@ export default function SlotMachine() {
         setWin(isWinStat);
         const { moneyWin } = calcMoneyWin(currentBet, countSame, SYMBOLS);
         console.log("Ви вийграли, ФІНАЛЬНА кількість грошей: " + moneyWin);
-        handleMoneyWin({amount: moneyWin});
-        handleMoney(-moneyWin);
+        handleMoneyWin({moneyWin: moneyWin});
+        handleMoney({amount: -moneyWin});
         moneyWinStat = moneyWin;
         countWin++;
       }
       const balanceStat: number = money - currentBet + moneyWinStat;
       console.log("КІЛЬКІСТЬ ПЕРЕМОГ: " + countWin);
-      handlePercentWin(countWin);
+      handlePercentWin({countWin: countWin});
       addStatisticElement(
         isWinStat,
         result,

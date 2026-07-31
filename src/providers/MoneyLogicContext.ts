@@ -4,7 +4,7 @@ import GlobalContext from "./StatisticContext";
 
 interface MoneyLogicContextType {
     money: number;
-    handleMoneyWin: (moneyWin: number) => void;
+   // handleMoneyWin: (moneyWin: number) => void;
     handleMoney: (amount: number) => number;
     onSpin: () => void;
     handleIcon: (firstIcon: string, secondIcon: string, thirdIcon: string) => void;
@@ -13,7 +13,7 @@ interface MoneyLogicContextType {
 
 const MoneyLogicContext = createContext<MoneyLogicContextType>({
     money: BASE_MONEY,
-    handleMoneyWin: () => { },
+  //  handleMoneyWin: () => { },
     handleMoney: () => 0,
     onSpin: () => { },
     handlePercentWin: () => { },

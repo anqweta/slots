@@ -1,7 +1,14 @@
 export type handleMoneyPayload = {
     amount: number
-}        
-export type handlePercentWin = {
+}    
+export type handleMoneyWinPayload = {
+    moneyWin: number;
+}    
+export type handlePercentWinPayload = {
     countWin: number, 
-    gameCount: number
+}
+export type handleIconPayload = {
+    firstIcon: string,
+    secondIcon: string,
+    thirdIcon: string
 }

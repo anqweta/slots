@@ -1,11 +1,11 @@
 import Menu from "./menu/menu/menu";
 import "./header.css"
-import { useContext } from "react";
-import MoneyLogicContext from "../../providers/MoneyLogicContext";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../app/store";
 
 export default function Header() {
 
-    const {money} = useContext(MoneyLogicContext);
+    const money = useSelector((state: RootState) => state.money.money)
 
     return (
         <header>

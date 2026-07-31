@@ -6,7 +6,6 @@ import SideBar from "./components/sideBar/sideBar";
 import { BASE_MONEY } from "./constants";
 import StatisticContext from "./providers/StatisticContext"
 import MoneyLogicContext from "./providers/MoneyLogicContext";
-import { Counter } from "./features/counter/Counter";
 
 export interface StatisticItem {
   numberGame: number;
@@ -39,29 +38,6 @@ function App() {
     },
   ]);
 
-  const handleMoney = (amount: number): number => {
-    if (money >= amount) {
-      setMoney((prevMoney) => prevMoney - amount);
-    }
-    return money - amount;
-  };
-
-  const handleMoneyWin = (moneyWin: number): void => {
-    setMoneyWin(moneyWin);
-  };
-
-  const handlePercentWin = (countWin: number): void => {
-    setPercentWin(Math.round((countWin / (gameCount + 1)) * 100));
-    console.log(countWin + "ділимо на " + gameCount);
-  };
-
-  const handleIcon = (firstIcon: string, secondIcon: string, thirdIcon: string): void => {
-    setIcon([firstIcon, secondIcon, thirdIcon]);
-  };
-
-  const spin = (): void => {
-    setGameCount((prevCount) => prevCount + 1);
-  };
 
   const addStatisticElement = (
     result: boolean,
@@ -90,23 +66,12 @@ function App() {
       gameCount: gameCount,
       icon: icon,
       statistic: statistic }}>
-      <MoneyLogicContext.Provider value={{
-      money: money,
-      handleMoneyWin: handleMoneyWin,
-      handleMoney: handleMoney,
-      onSpin: spin, 
-      handlePercentWin: handlePercentWin,
-      handleIcon: handleIcon,
-
-    }}>
   <div className="wrapper">
       <Header />
       <Main/>
       <SideBar
           />
-      <Counter></Counter>
     </div>
-    </MoneyLogicContext.Provider>
     </StatisticContext.Provider>
   
   );

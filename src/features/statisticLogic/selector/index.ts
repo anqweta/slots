@@ -1,6 +1,6 @@
 import { RootState } from "../../store";
 
-export const percentWinSelector = (state: RootState) => state.moneyLogic.percentWin;
+export const percentWinSelector = (state: RootState) => state.statisticLogic.percentWin;
 
 export const moneyWinSelector = (state: RootState) => state.statisticLogic.moneyWin;
 

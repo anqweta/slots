@@ -5,8 +5,8 @@ import ReelsBoard from "./reelsBoard/reelsBoard";
 import BetSelector from "./betSelector/betSelector";
 import { SYMBOLS } from "../../../constants";
 import { calcMoneyWin } from "../../../utils/helper";
-import StatisticContext from "../../../providers/StatisticContext";
-import { handleMoneyWin, handleIcon, handlePercentWin, handleMoney, onSpin } from "../../../features/moneyLogic";
+import { handleMoneyWin, handleMoney } from "../../../features/moneyLogic";
+import {handleIcon, handlePercentWin, onSpin } from "../../../features/statisticLogic"
 import { addStatisticElement } from "../../../features/statisticLogic";
 import { useDispatch, useSelector } from "react-redux";
 import { moneySelector } from "../../../features/moneyLogic/selector";
@@ -70,7 +70,7 @@ export default function SlotMachine() {
 
     setReel(newReel);
 
-    onSpin();
+    dispatch(onSpin())
     setIsSpinning(true);
 
     let result: string[] = [
@@ -81,11 +81,11 @@ export default function SlotMachine() {
 
     setTimeout(() => {
 
-      handleIcon(
+      dispatch(handleIcon(
         {firstIcon :SYMBOLS[newReel[0]].icon,
         secondIcon:   SYMBOLS[newReel[1]].icon,
         thirdIcon: SYMBOLS[newReel[2]].icon,}
-      );
+      ))
 
       let moneyWinStat: number = 0;
 

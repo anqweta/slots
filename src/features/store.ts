@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import moneyLogicReducer from '../features/moneyLogic/moneyLogicSlice'
+import moneyLogicReducer from './moneyLogic'
+import statisticLogicReducer from './statisticLogic'
 
 export const store = configureStore({
   reducer: {
-        moneyLogic: moneyLogicReducer
+    moneyLogic: moneyLogicReducer,
+    statisticLogic: statisticLogicReducer
   },
 })
 

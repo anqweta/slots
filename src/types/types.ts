@@ -12,3 +12,11 @@ export type handleIconPayload = {
     secondIcon: string,
     thirdIcon: string
 }
+
+export type addStatisticElementPayload = {
+    isWinStat: boolean,
+    result: string[],
+    currentBet: number,
+    moneyWinStat: number, 
+    balanceStat: number
+}

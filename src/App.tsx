@@ -4,8 +4,6 @@ import Header from "./components/header/header";
 import Main from "./components/main/main";
 import SideBar from "./components/sideBar/sideBar";
 import { BASE_MONEY } from "./constants";
-import StatisticContext from "./providers/StatisticContext"
-import MoneyLogicContext from "./providers/MoneyLogicContext";
 
 export interface StatisticItem {
   numberGame: number;
@@ -38,44 +36,16 @@ function App() {
     },
   ]);
 
-
-  const addStatisticElement = (
-    result: boolean,
-    icon: string[],
-    bet: number,
-    moneyWin: number,
-    money: number
-  ): void => {
-    const newElement: StatisticItem = {
-      numberGame: gameCount + 1,
-      result: result ? "win" : "lose",
-      icon: icon,
-      bet: bet,
-      moneyWin: moneyWin,
-      money: money,
-    };
-    setStatistic([...statistic, newElement]);
-    console.log(newElement);
-  };
-
   return (
-    <StatisticContext.Provider value={{
-      addStatisticElement: addStatisticElement,
-      percentWin: percentWin,
-      moneyWin: moneyWin,
-      gameCount: gameCount,
-      icon: icon,
-      statistic: statistic }}>
-  <div className="wrapper">
+    <div className="wrapper">
       <Header />
-      <Main/>
+      <Main />
       <SideBar
-          />
+      />
     </div>
-    </StatisticContext.Provider>
   
   );
+
 }
 
-
-export default App;
+  export default App;

@@ -1,3 +1,5 @@
+import styles from "./slotMachine.module.scss";
+
 interface DotsProps {
     props: {
         class: string;
@@ -6,6 +8,6 @@ interface DotsProps {
 
 export default function Dots({ props }: DotsProps) {
     return (
-        <span className={"dots " + props.class}></span>
+        <span className={`${styles.dots} ${props.class}`}></span>
     );
 }

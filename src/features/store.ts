@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+
 import balanceReducer from './balance'
 import { gameStatisticReducer } from './gameStatistic'
 

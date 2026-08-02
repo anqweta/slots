@@ -1,24 +1,26 @@
-import { useContext, useState } from "react";
-import "./slotMachine.css";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import styles from "./slotMachine.module.scss";
 import Dots from "./dots";
 import ReelsBoard from "./reelsBoard/reelsBoard";
 import BetSelector from "./betSelector/betSelector";
-import { SYMBOLS } from "../../../constants";
-import { calcMoneyWin } from "../../../utils/helper";
-import { handleMoneyWin, handleMoney } from "../../../features/balance";
-import {handleIcon, handlePercentWin, onSpin } from "../../../features/gameStatistic"
-import { addStatisticElement } from "../../../features/gameStatistic";
-import { useDispatch, useSelector } from "react-redux";
-import { moneySelector } from "../../../features/balance/selector";
-import { AppDispatch } from "../../../features/store";
+import { SYMBOLS } from "@/constants";
+import { calcMoneyWin } from "@/utils/helper";
+import { handleMoneyWin, handleMoney } from "@/features/balance";
+import {handleIcon, handlePercentWin, onSpin } from "@/features/gameStatistic"
+import { addStatisticElement } from "@/features/gameStatistic";
+import { moneySelector } from "@/features/balance/selector";
+import { AppDispatch } from "@/features/store";
+
 interface SpanClassItem {
   class: string;
 }
 
-let spanClass: SpanClassItem[] = [
-  { class: "span-red" },
-  { class: "span-yellow" },
-  { class: "span-blue" },
+const spanClass: SpanClassItem[] = [
+  { class: styles["span-red"] },
+  { class: styles["span-yellow"] },
+  { class: styles["span-blue"] },
 ];
 let countWin: number = 0;
 
@@ -70,7 +72,7 @@ export default function SlotMachine() {
     dispatch(onSpin())
     setIsSpinning(true);
 
-    let result: string[] = [
+    const result: string[] = [
       SYMBOLS[newReel[0]].icon,
       SYMBOLS[newReel[1]].icon,
       SYMBOLS[newReel[2]].icon,
@@ -119,8 +121,8 @@ export default function SlotMachine() {
   };
 
   return (
-    <div className="slotMachine">
-      <h2 className="title">
+    <div className={styles.slotMachine}>
+      <h2 className={styles.title}>
         {spanClass.map((item, index) => (
           <Dots key={index} props={item} />
         ))}
@@ -131,7 +133,7 @@ export default function SlotMachine() {
       </h2>
       <ReelsBoard positions={isReel} isSpinning={isSpinning} isWin={isWin} />
       <BetSelector setCurrentBet={setCurrentBet} />
-      <button onClick={spinClick} disabled={isSpinning} className="button-spin">
+      <button onClick={spinClick} disabled={isSpinning} className={styles["button-spin"]}>
         SPIN
       </button>
     </div>

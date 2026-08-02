@@ -1,13 +1,14 @@
+import { useSelector } from "react-redux";
+
 import InfoItem from "./infoItem/infoItem";
 import AllGameStatistic from "./allGameStatistic/allGameStatistic";
-import "./statisticWidget.css";
-import { useSelector } from "react-redux";
-import { gameCountSelector, iconSelector, percentWinSelector, statisticSelector } from "../../../features/gameStatistic/selector";
+import styles from "./statisticWidget.module.scss";
+import { gameCountSelector, iconSelector, percentWinSelector, statisticSelector } from "@/features/gameStatistic/selector";
 
 interface StatisticInfoItem {
   title: string;
   number: number | string | number[] | string[];
-} 
+}
 
 export default function StatisticWidget() {
 
@@ -24,9 +25,9 @@ export default function StatisticWidget() {
   ];
 
   return (
-    <div className="statistic">
+    <div className={styles.statistic}>
       <h2>STATISTIC</h2>
-      <div className="statistic__info">
+      <div className={styles.statistic__info}>
         {statisticInfo.map((item, index) => (
           <InfoItem key={index} props={item} />
         ))}

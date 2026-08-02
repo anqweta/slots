@@ -1,7 +1,8 @@
-import Menu from "./menu/menu/menu";
-import "./header.css"
 import { useSelector } from "react-redux";
-import { moneySelector } from "../../features/balance/selector";
+
+import Menu from "./menu/menu/menu";
+import styles from "./header.module.scss"
+import { moneySelector } from "@/features/balance/selector";
 
 export default function Header() {
 
@@ -9,9 +10,9 @@ export default function Header() {
 
     return (
         <header>
-            <span className="logo">LUCKY<span>SPIN</span></span>
+            <span className={styles.logo}>LUCKY<span>SPIN</span></span>
             <Menu />
-            <span className="balance">БАЛАНС <span>{money}</span></span>
+            <span className={styles.balance}>БАЛАНС <span>{money}</span></span>
         </header>
     );
 }

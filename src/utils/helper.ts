@@ -1,4 +1,4 @@
-import { SymbolItem } from "../constants";
+import { SymbolItem } from "@/constants";
 
 export const calcMoneyWin = (
   currentBet: number,
@@ -24,6 +24,8 @@ export const calcMoneyWin = (
     currentMult = SYMBOLS[maxKey as number].secondMult;
     console.log("Ви вийграли, ваша множник ПРИ 2 ІКОНАХ: " + currentMult);
   }
+
   const moneyWin: number = currentBet * currentMult;
+
   return { moneyWin, currentMult };
 };

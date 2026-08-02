@@ -1,5 +1,5 @@
-import "./allGameStatistic.css";
-import { StatisticItem } from "../../../../App";
+import styles from "./allGameStatistic.module.scss";
+import { StatisticItem } from "@/App";
 
 interface AllGameStatisticProps {
   props: StatisticItem;
@@ -9,9 +9,10 @@ export default function AllGameStatistic({ props }: AllGameStatisticProps) {
   if (props.numberGame === 0) {
     return;
   }
+
   return (
     <div
-      className={`item-stat ${props.result === "win" ? "item-green" : "item-red"}`}
+      className={`${styles["item-stat"]} ${props.result === "win" ? styles["item-green"] : styles["item-red"]}`}
     >
       <p>
         Game Number: <span>{props.numberGame}</span>

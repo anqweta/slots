@@ -1,6 +1,7 @@
-import "./betSelector.css"
-import Bet from "./bet/bet";
 import { useState } from "react";
+
+import styles from "./betSelector.module.scss"
+import Bet from "./bet/bet";
 
 interface BetItem {
     id: number;
@@ -21,13 +22,14 @@ interface BetSelectorProps {
 export default function BetSelector({ setCurrentBet }: BetSelectorProps) {
     
     const [activeId, setActiveId] = useState<number>(0);
+
     const selectBet = (id: number, betAmount: number): void => {
         setActiveId(id);
         setCurrentBet(betAmount);
     };
     
     return (
-        <div className="betSelector">
+        <div className={styles.betSelector}>
             <span>BET</span>
             {bets.map((item, index) => (
                 <Bet key={index} props={item} isActive={activeId === item.id} onClick={() => selectBet(item.id, item.bet)} />

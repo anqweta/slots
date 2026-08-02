@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { BASE_MONEY } from '../../constants';
-import type { handleMoneyPayload } from '../../types/types';
-import type { handleMoneyWinPayload } from '../../types/types'; 
+import type { handleMoneyPayload } from '../../types/typesBalance';
+import type { handleMoneyWinPayload } from '../../types/typesBalance'; 
 
 
 

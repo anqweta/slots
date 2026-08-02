@@ -5,11 +5,11 @@ import ReelsBoard from "./reelsBoard/reelsBoard";
 import BetSelector from "./betSelector/betSelector";
 import { SYMBOLS } from "../../../constants";
 import { calcMoneyWin } from "../../../utils/helper";
-import { handleMoneyWin, handleMoney } from "../../../features/moneyLogic";
-import {handleIcon, handlePercentWin, onSpin } from "../../../features/statisticLogic"
-import { addStatisticElement } from "../../../features/statisticLogic";
+import { handleMoneyWin, handleMoney } from "../../../features/balance";
+import {handleIcon, handlePercentWin, onSpin } from "../../../features/gameStatistic"
+import { addStatisticElement } from "../../../features/gameStatistic";
 import { useDispatch, useSelector } from "react-redux";
-import { moneySelector } from "../../../features/moneyLogic/selector";
+import { moneySelector } from "../../../features/balance/selector";
 import { AppDispatch } from "../../../features/store";
 interface SpanClassItem {
   class: string;
@@ -44,9 +44,6 @@ export default function SlotMachine() {
     if (currentBet === 0) {
       return;
     }
-
-    handleMoney({ amount: currentBet });
-    handleMoney({ amount: currentBet });
 
     dispatch(handleMoney({ amount: currentBet }));
 

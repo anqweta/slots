@@ -9,4 +9,3 @@ export const gameCountSelector = (state: RootState) => state.statisticLogic.game
 export const iconSelector = (state: RootState) => state.statisticLogic.icon;
 
 export const statisticSelector = (state: RootState) => state.statisticLogic.statistic;
-//я думаю это можно переделать криетСелектором.......Я ДУМАЮ.......

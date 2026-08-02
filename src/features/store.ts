@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import moneyLogicReducer from './moneyLogic'
-import statisticLogicReducer from './statisticLogic'
+import moneyLogicReducer from './balance'
+import statisticLogicReducer from './gameStatistic'
 
 export const store = configureStore({
   reducer: {

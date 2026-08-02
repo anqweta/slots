@@ -2,7 +2,7 @@ import InfoItem from "./infoItem/infoItem";
 import AllGameStatistic from "./allGameStatistic/allGameStatistic";
 import "./statisticWidget.css";
 import { useSelector } from "react-redux";
-import { gameCountSelector, iconSelector, percentWinSelector, statisticSelector } from "../../../features/statisticLogic/selector";
+import { gameCountSelector, iconSelector, percentWinSelector, statisticSelector } from "../../../features/gameStatistic/selector";
 
 interface StatisticInfoItem {
   title: string;

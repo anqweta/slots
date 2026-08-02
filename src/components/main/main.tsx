@@ -1,4 +1,4 @@
-import "./main.css";
+import "./main.module.scss";
 import SlotMachine from "./slotMachine/slotMachine";
 
 

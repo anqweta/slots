@@ -1,6 +1,5 @@
-import "./sideBar.css";
+import "./sideBar.module.scss";
 import StatisticWidget from "./statisticWidget/statisticWidget";
-import { StatisticItem } from "../../App";
 
 export default function SideBar() {
   return (

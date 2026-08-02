@@ -1,6 +1,6 @@
 import InfoItem from "./infoItem/infoItem";
 import AllGameStatistic from "./allGameStatistic/allGameStatistic";
-import "./statisticWidget.css";
+import styles from "./statisticWidget.module.scss";
 import { useSelector } from "react-redux";
 import { gameCountSelector, iconSelector, percentWinSelector, statisticSelector } from "../../../features/gameStatistic/selector";
 
@@ -24,9 +24,9 @@ export default function StatisticWidget() {
   ];
 
   return (
-    <div className="statistic">
+    <div className={styles.statistic}>
       <h2>STATISTIC</h2>
-      <div className="statistic__info">
+      <div className={styles.statistic__info}>
         {statisticInfo.map((item, index) => (
           <InfoItem key={index} props={item} />
         ))}

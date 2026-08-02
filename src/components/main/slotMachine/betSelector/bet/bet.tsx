@@ -1,3 +1,5 @@
+import styles from "../betSelector.module.scss";
+
 interface BetProps {
     props: {
         id: number;
@@ -9,7 +11,7 @@ interface BetProps {
 
 export default function Bet({ props, isActive, onClick }: BetProps) {
     return (
-        <button id={props.id.toString()} onClick={onClick}  className={`bet-button ${isActive ? 'active' : ''}`}>
+        <button id={props.id.toString()} onClick={onClick}  className={`bet-button ${isActive ? styles.active : ''}`}>
             {props.bet}
         </button>
     )

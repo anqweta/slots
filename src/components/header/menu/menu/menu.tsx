@@ -1,4 +1,4 @@
-import "./menu.css";
+import styles from "./menu.module.scss";
 import MenuItem from "./menuItem/menuItem"
 
 interface MenuItemType {
@@ -14,7 +14,7 @@ let MenuItems: MenuItemType[] = [
 export default function Menu() {
     return (
         <nav className="menu">
-            <ul className="menu__list">
+            <ul className={styles.menu__list}>
                 {MenuItems.map((item, index) => (
                     <MenuItem key={index} props={item} />
                 ))}

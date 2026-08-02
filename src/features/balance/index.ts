@@ -17,7 +17,7 @@ const initialState: MoneyLogicType = {
 }
 
 export const moneyLogic = createSlice({
-    name: 'moneyLogic',
+    name: 'balance',
     initialState,
     reducers: {
         handleMoney: (state, action: PayloadAction<handleMoneyPayload>) => {

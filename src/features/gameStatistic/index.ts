@@ -28,7 +28,7 @@ const initialState: statisticLogicType = {
 }
 
 export const statisticLogic = createSlice({
-    name: 'statisticLogic',
+    name: 'gameStatistic',
     initialState,
     reducers: {
         addStatisticElement: (state, action:PayloadAction<addStatisticElementPayload>) => {

@@ -10,6 +10,7 @@ interface BetProps {
 }
 
 export default function Bet({ props, isActive, onClick }: BetProps) {
+
     return (
         <button id={props.id.toString()} onClick={onClick}  className={`bet-button ${isActive ? styles.active : ''}`}>
             {props.bet}

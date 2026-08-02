@@ -1,6 +1,7 @@
+import { useSelector } from "react-redux";
+
 import Menu from "./menu/menu/menu";
 import styles from "./header.module.scss"
-import { useSelector } from "react-redux";
 import { moneySelector } from "@/features/balance/selector";
 
 export default function Header() {

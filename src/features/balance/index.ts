@@ -1,10 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+
 import { BASE_MONEY } from '@/constants';
 import type { handleMoneyPayload } from '@/types/typesBalance';
 import type { handleMoneyWinPayload } from '@/types/typesBalance'; 
-
-
 
 interface MoneyLogicType {
     money: number;
@@ -30,7 +29,6 @@ export const moneyLogic = createSlice({
             const { moneyWin } = action.payload;
             state.moneyWin = moneyWin;
         },
-
     }
 })
 

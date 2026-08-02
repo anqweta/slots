@@ -2,6 +2,7 @@ import styles from "./reel.module.scss";
 import { SYMBOLS, SymbolItem } from "@/constants";
 
 const tapeSymbols: SymbolItem[] = Array(12).fill(SYMBOLS).flat();
+
 const EXTRA_SPINS: number = 50;
 
 interface ReelProps {
@@ -16,6 +17,7 @@ export default function Reel({ stopIndex, isSpinning, delay }: ReelProps) {
   const safeStopIndex: number = SYMBOLS.length + stopIndex;
   const stopPosition: number = safeStopIndex * ICON_HEIGHT - OFFSET;
   const spinPosition: number = (EXTRA_SPINS + safeStopIndex) * ICON_HEIGHT - OFFSET;
+
   return (
     <div className={styles.reel}>
       <div

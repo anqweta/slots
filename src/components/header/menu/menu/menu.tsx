@@ -12,6 +12,7 @@ let MenuItems: MenuItemType[] = [
 ]
 
 export default function Menu() {
+
     return (
         <nav className="menu">
             <ul className={styles.menu__list}>

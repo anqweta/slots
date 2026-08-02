@@ -9,6 +9,7 @@ export default function AllGameStatistic({ props }: AllGameStatisticProps) {
   if (props.numberGame === 0) {
     return;
   }
+
   return (
     <div
       className={`${styles["item-stat"]} ${props.result === "win" ? styles["item-green"] : styles["item-red"]}`}

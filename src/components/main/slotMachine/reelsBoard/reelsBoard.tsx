@@ -2,6 +2,7 @@ import styles from "./reelBoard.module.scss";
 import Reel from "./reel/reel";
 
 export const ICON_HEIGHT: number = 100;
+
 interface ReelsBoardProps {
   positions: number[];
   isSpinning: boolean;

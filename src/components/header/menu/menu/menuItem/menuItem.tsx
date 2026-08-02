@@ -5,6 +5,7 @@ interface MenuItemProps {
 }
 
 export default function MenuItem({props}: MenuItemProps) {
+
     return (
         <li className="menu__item">
             <a href="">

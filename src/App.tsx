@@ -12,9 +12,7 @@ function App() {
       <SideBar
       />
     </div>
-
   );
-
 }
 
   export default App;

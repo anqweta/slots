@@ -2,6 +2,7 @@
 export type handlePercentWinPayload = {
     countWin: number, 
 }
+
 export type handleIconPayload = {
     firstIcon: string,
     secondIcon: string,

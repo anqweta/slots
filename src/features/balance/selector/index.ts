@@ -1,3 +1,3 @@
 import { RootState } from "../../store";
 
-export const moneySelector = (state: RootState) => state.moneyLogic.money;
+export const moneySelector = (state: RootState) => state.balance.money;

@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import moneyLogicReducer from './balance'
-import statisticLogicReducer from './gameStatistic'
+import balanceReducer from './balance'
+import { gameStatisticReducer } from './gameStatistic'
 
 export const store = configureStore({
   reducer: {
-    moneyLogic: moneyLogicReducer,
-    statisticLogic: statisticLogicReducer
+    balance: balanceReducer,
+    gameStatistic: gameStatisticReducer
   },
 })
 

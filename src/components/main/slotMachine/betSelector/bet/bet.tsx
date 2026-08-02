@@ -1,4 +1,4 @@
-import styles from "../betSelector.module.scss";
+import styles from "@/components/main/slotMachine/betSelector/betSelector.module.scss";
 
 interface BetProps {
     props: {

@@ -1,5 +1,5 @@
 import styles from "./allGameStatistic.module.scss";
-import { StatisticItem } from "../../../../App";
+import { StatisticItem } from "@/App";
 
 interface AllGameStatisticProps {
   props: StatisticItem;

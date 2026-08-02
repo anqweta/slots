@@ -1,4 +1,4 @@
-import { RootState } from "../../store";
+import { RootState } from "@/features/store";
 
 export const percentWinSelector = (state: RootState) => state.gameStatistic.percentWin;
 

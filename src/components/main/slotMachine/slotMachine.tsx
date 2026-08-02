@@ -3,14 +3,14 @@ import styles from "./slotMachine.module.scss";
 import Dots from "./dots";
 import ReelsBoard from "./reelsBoard/reelsBoard";
 import BetSelector from "./betSelector/betSelector";
-import { SYMBOLS } from "../../../constants";
-import { calcMoneyWin } from "../../../utils/helper";
-import { handleMoneyWin, handleMoney } from "../../../features/balance";
-import {handleIcon, handlePercentWin, onSpin } from "../../../features/gameStatistic"
-import { addStatisticElement } from "../../../features/gameStatistic";
+import { SYMBOLS } from "@/constants";
+import { calcMoneyWin } from "@/utils/helper";
+import { handleMoneyWin, handleMoney } from "@/features/balance";
+import {handleIcon, handlePercentWin, onSpin } from "@/features/gameStatistic"
+import { addStatisticElement } from "@/features/gameStatistic";
 import { useDispatch, useSelector } from "react-redux";
-import { moneySelector } from "../../../features/balance/selector";
-import { AppDispatch } from "../../../features/store";
+import { moneySelector } from "@/features/balance/selector";
+import { AppDispatch } from "@/features/store";
 interface SpanClassItem {
   class: string;
 }

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { addStatisticElementPayload } from "../../types/typesStatistic";
-import type { handleIconPayload } from '../../types/typesStatistic';
-import type { handlePercentWinPayload } from '../../types/typesStatistic';
+import type { addStatisticElementPayload } from "@/types/typesStatistic";
+import type { handleIconPayload } from '@/types/typesStatistic';
+import type { handlePercentWinPayload } from '@/types/typesStatistic';
 interface StatisticItem {
     numberGame: number;
     result: string | number;

@@ -1,5 +1,5 @@
 import styles from "./reel.module.scss";
-import { SYMBOLS, SymbolItem } from "../../../../../constants";
+import { SYMBOLS, SymbolItem } from "@/constants";
 
 const tapeSymbols: SymbolItem[] = Array(12).fill(SYMBOLS).flat();
 const EXTRA_SPINS: number = 50;

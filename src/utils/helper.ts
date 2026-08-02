@@ -1,4 +1,4 @@
-import { SymbolItem } from "../constants";
+import { SymbolItem } from "@/constants";
 
 export const calcMoneyWin = (
   currentBet: number,

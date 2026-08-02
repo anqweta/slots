@@ -1,8 +1,8 @@
 import InfoItem from "./infoItem/infoItem";
 import AllGameStatistic from "./allGameStatistic/allGameStatistic";
 import "./statisticWidget.css";
-import { useContext } from "react";
-import StatisticContext from "../../../providers/StatisticContext";
+import { useSelector } from "react-redux";
+import { gameCountSelector, iconSelector, percentWinSelector, statisticSelector } from "../../../features/gameStatistic/selector";
 
 interface StatisticInfoItem {
   title: string;
@@ -11,7 +11,10 @@ interface StatisticInfoItem {
 
 export default function StatisticWidget() {
 
-  const { gameCount, percentWin, icon, statistic } = useContext(StatisticContext);
+  const gameCount = useSelector(gameCountSelector);
+  const percentWin = useSelector(percentWinSelector);
+  const icon = useSelector(iconSelector);
+  const statistic = useSelector(statisticSelector);
 
   let statisticInfo: StatisticInfoItem[] = [
     { title: "Counf of game: ", number: gameCount },

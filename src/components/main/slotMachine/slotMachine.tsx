@@ -5,9 +5,12 @@ import ReelsBoard from "./reelsBoard/reelsBoard";
 import BetSelector from "./betSelector/betSelector";
 import { SYMBOLS } from "../../../constants";
 import { calcMoneyWin } from "../../../utils/helper";
-import MoneyLogicContext from "../../../providers/MoneyLogicContext";
-import StatisticContext from "../../../providers/StatisticContext";
-
+import { handleMoneyWin, handleMoney } from "../../../features/balance";
+import {handleIcon, handlePercentWin, onSpin } from "../../../features/gameStatistic"
+import { addStatisticElement } from "../../../features/gameStatistic";
+import { useDispatch, useSelector } from "react-redux";
+import { moneySelector } from "../../../features/balance/selector";
+import { AppDispatch } from "../../../features/store";
 interface SpanClassItem {
   class: string;
 }
@@ -20,14 +23,19 @@ let spanClass: SpanClassItem[] = [
 let countWin: number = 0;
 
 export default function SlotMachine() {
+
+  const dispatch = useDispatch<AppDispatch>();
   const [currentBet, setCurrentBet] = useState<number>(0);
   const [isSpinning, setIsSpinning] = useState<boolean>(false);
   const [isReel, setReel] = useState<number[]>([0, 0, 0]);
   const [isWin, setWin] = useState<boolean>(false);
-  const { money, handleMoneyWin, handleMoney, onSpin, handlePercentWin, handleIcon } = useContext(MoneyLogicContext);
-  const { addStatisticElement } = useContext(StatisticContext);
+
+  const money = useSelector(moneySelector);
+
   const spinClick = (): void => {
+
     setWin(false);
+
     if (money < currentBet) {
       alert("Денег нет!");
       return;
@@ -37,7 +45,7 @@ export default function SlotMachine() {
       return;
     }
 
-    handleMoney(currentBet);
+    dispatch(handleMoney({ amount: currentBet }));
 
     if (isSpinning) {
       return;
@@ -59,45 +67,52 @@ export default function SlotMachine() {
 
     setReel(newReel);
 
+    dispatch(onSpin())
     setIsSpinning(true);
 
-    if (onSpin) {
-      onSpin();
-    }
     let result: string[] = [
       SYMBOLS[newReel[0]].icon,
       SYMBOLS[newReel[1]].icon,
       SYMBOLS[newReel[2]].icon,
     ];
+
     setTimeout(() => {
-      handleIcon(
-        SYMBOLS[newReel[0]].icon,
-        SYMBOLS[newReel[1]].icon,
-        SYMBOLS[newReel[2]].icon,
-      );
+
+      dispatch(handleIcon(
+        {firstIcon :SYMBOLS[newReel[0]].icon,
+        secondIcon:   SYMBOLS[newReel[1]].icon,
+        thirdIcon: SYMBOLS[newReel[2]].icon,}
+      ))
+
       let moneyWinStat: number = 0;
+
       setIsSpinning(false);
+
       const isWinStat: boolean = countSame.size <= 2;
       console.log(isWinStat + "ЧИ Є ПЕРЕМОГА");
+
       if (isWinStat) {
         setWin(isWinStat);
         const { moneyWin } = calcMoneyWin(currentBet, countSame, SYMBOLS);
         console.log("Ви вийграли, ФІНАЛЬНА кількість грошей: " + moneyWin);
-        handleMoneyWin(moneyWin);
-        handleMoney(-moneyWin);
+        handleMoneyWin({moneyWin: moneyWin});
+        dispatch(handleMoney({amount: -moneyWin}));
         moneyWinStat = moneyWin;
         countWin++;
       }
+
       const balanceStat: number = money - currentBet + moneyWinStat;
       console.log("КІЛЬКІСТЬ ПЕРЕМОГ: " + countWin);
-      handlePercentWin(countWin);
-      addStatisticElement(
-        isWinStat,
+
+      dispatch(handlePercentWin({ countWin: countWin }));
+
+      dispatch(addStatisticElement(
+        {isWinStat,
         result,
         currentBet,
         moneyWinStat,
-        balanceStat,
-      );
+        balanceStat,}
+      ))
     }, 5200);
 
     console.log(isWin + "RESULT GAME");

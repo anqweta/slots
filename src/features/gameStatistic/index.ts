@@ -11,7 +11,7 @@ interface StatisticItem {
     money: number;
 }
 
-interface statisticLogicType {
+interface statisticType {
     gameCount: number,
     statistic: StatisticItem[],
     percentWin: number;
@@ -19,7 +19,7 @@ interface statisticLogicType {
     icon: number[] | string[];
 }
 
-const initialState: statisticLogicType = {
+const initialState: statisticType = {
     gameCount: 0,
     statistic: [],
     percentWin: 0,
@@ -27,7 +27,7 @@ const initialState: statisticLogicType = {
     icon: []
 }
 
-export const statisticLogic = createSlice({
+export const gameStatistic = createSlice({
     name: 'gameStatistic',
     initialState,
     reducers: {
@@ -63,8 +63,8 @@ export const statisticLogic = createSlice({
     }
 })
 
-export const {addStatisticElement, handleIcon, handlePercentWin, onSpin} = statisticLogic.actions
+export const {addStatisticElement, handleIcon, handlePercentWin, onSpin} = gameStatistic.actions
 
-export const moneyLogicReducer = statisticLogic.reducer;
+export const gameStatisticReducer = gameStatistic.reducer;
 
-export default moneyLogicReducer;
+export default gameStatisticReducer;

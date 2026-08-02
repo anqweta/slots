@@ -1,6 +1,4 @@
-export type handleMoneyWinPayload = {
-    moneyWin: number;
-}    
+
 export type handlePercentWinPayload = {
     countWin: number, 
 }

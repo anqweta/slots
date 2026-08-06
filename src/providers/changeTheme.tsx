@@ -1,10 +1,10 @@
 import { createContext } from "react";
-import type { themePinkType, darkThemeType } from "@/types/typesTheme";
 import { darkTheme } from "@/theme/theme";
+import { Theme } from "@emotion/react";
 
 interface ChangeThemeType {
-    themeValue: darkThemeType | themePinkType;
-    handleThemeValue: (newThemeValue: darkThemeType | themePinkType) => void;
+    themeValue: Theme;
+    handleThemeValue: (key: string) => void;
 }
 
 const ChangeThemeContext = createContext<ChangeThemeType>({

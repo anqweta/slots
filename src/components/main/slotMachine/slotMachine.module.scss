@@ -5,16 +5,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #16162a;
+    background-color: var(--mui-palette-primary-main);
     border-radius: 50px;
-    border: 1px solid #43392f;
+    border: 1px solid var(--mui-palette-secondary-main);
 }
 .title {
     display: flex;
     align-items: center;
     gap: 20px;
     margin-top: 20px;
-    color: #f5c542;
+    color: var(--mui-palette-secondary-main);
     letter-spacing: 2px;
     font-size: 20px
 
@@ -44,6 +44,6 @@
     letter-spacing: 10px;
     font-weight: 700;
     border: none;
-    background-color: #f5c542;
+    background-color: var(--mui-palette-secondary-main);
     color: #0a0a12;
 }

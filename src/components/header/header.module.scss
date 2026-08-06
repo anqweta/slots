@@ -2,15 +2,14 @@ header {
     width: 100%;
     height: 70px;
     padding: 5px 15px;
-    background-color: #16162a;
+    background-color: var(--mui-palette-primary-main);
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #43392f;
+    border-bottom: 1px solid var(--mui-palette-secondary-main);
 }
 
 .logo {
-    color: #f5c542;
+    color: var(--mui-palette-secondary-main);
     font-size: 25px;
 }
 .logo > span {
@@ -18,12 +17,12 @@ header {
 }
 
 .balance {
-    padding: 5px 10px;
-    border: 2px solid #43392f;
+    padding: 5px 20px;
+    border: 2px solid var(--mui-palette-secondary-main);
     border-radius: 50px;
     font-size: 14px;
 }
 .balance > span {
-    color: #f5c542;
+    color: var(--mui-palette-secondary-main);
     font-size: 20px;
 }

@@ -1,15 +1,25 @@
-function handleClick(this: string) {
-}
+import ChangeThemeContext from '@/providers/changeTheme'
+import { FormControl, InputLabel, MenuItem } from '@mui/material'
+import { Select } from '@mui/material'
+import { useContext } from 'react'
 
-export default function Select() {
+export default function SelectMiu() {
+  const { themeValue, handleThemeValue } = useContext(ChangeThemeContext)
 
-    //const { handleThemeValue } = useContext(ChangeThemeContext);
-
-
-    return (
-        <select name="select" id="choseTheme" onChange={handleClick}>
-            <option value="pink">Pink</option>
-            <option value="dark">Dark</option>
-        </select>
-    );
+  return (
+    <FormControl fullWidth>
+      <InputLabel id="demo-simple-select-label">Color</InputLabel>
+      <Select
+        sx={{ width: '20%' }}
+        defaultValue={themeValue || 'dark'}
+        labelId="demo-simple-select-label"
+        id="demo-simple-select"
+        label="Color"
+        onChange={(event) => handleThemeValue(event.target.value as string)}
+      >
+        <MenuItem value="dark">Dark</MenuItem>
+        <MenuItem value="pink">Pink</MenuItem>
+      </Select>
+    </FormControl>
+  )
 }

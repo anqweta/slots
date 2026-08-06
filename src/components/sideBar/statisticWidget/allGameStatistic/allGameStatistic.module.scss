@@ -5,10 +5,10 @@
     font-size: 24px
 }
 .item-green {
-    background-color: rgb(0, 83, 0);
+    background-color: var(--mui-palette-secondary-light);
 }
 .item-red {
-    background-color: rgb(90, 0, 0);
+    background-color: var(--mui-palette-secondary-dark);
 }
 .item-stat > p > span {
     color: white;

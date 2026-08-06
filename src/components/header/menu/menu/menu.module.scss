@@ -1,5 +1,7 @@
 .menu__list {
     display: flex;
+    align-items: center;
+    margin-left: 500px;
 }
 li {
     padding: 10px 20px;
@@ -10,8 +12,8 @@ li {
 }
 
 li:hover {
-    background-color: #312b2d;
+    background-color:var(--mui-palette-secondary-main);
     a {
-        color: #f5c542;
+        color: var(--mui-palette-text-primary);
     }
 }

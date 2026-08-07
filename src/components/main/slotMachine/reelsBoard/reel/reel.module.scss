@@ -1,7 +1,7 @@
 .reel {
     width: 30%;
     height: 260px;
-    background-color: #16162a;
+    background-color: var(--mui-palette-primary-main);
     overflow: hidden;
 }
 .reel__tape {
@@ -24,8 +24,6 @@ transition: none;
 }
 
 .reel__tape.spinning {
-   /* animation: infiniteSpin 0.15s linear infinite;
-    transition: none; */
     transition: transform 4s cubic-bezier(0.1, 0.7, 0.1, 1);
 }
 

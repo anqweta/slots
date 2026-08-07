@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    color: #7a7a9a;
+    color: var(--mui-palette-text-primary);
 }
 
 ul {
@@ -18,7 +18,7 @@ button {
 }
 
 body {
-    background-color: #14141f;
+    background-color: var(--mui-palette-primary-dark);
     font-family: "Poppins", sans-serif;
     font-size: 21px;
     color: white;

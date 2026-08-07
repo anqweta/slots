@@ -1,16 +1,47 @@
-# React + Vite
+# slots
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Monorepo for the slots project, using Git submodules as separate repositories.
 
-Currently, two official plugins are available:
+## Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```
+slots/
+├── frontend/  → https://github.com/anqweta/frontend-slots.git
+└── backend/   → https://github.com/anqweta/backend-slots.git
+```
 
-## React Compiler
+## Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Clone with submodules:
 
-## Expanding the ESLint configuration
+```bash
+git clone --recurse-submodules https://github.com/anqweta/slots.git
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Update submodules to their latest remote commits:
+
+```bash
+git submodule update --remote --recursive
+```
+
+## Manage submodules
+
+Instructions on how to add/remove submodules:
+
+### Add a submodule
+
+```bash
+git submodule add https://github.com/anqweta/<repo>.git <path>
+```
+
+### Remove a submodule
+
+```bash
+git submodule deinit -f <path>
+git rm -f <path>
+rm -rf .git/modules/<path>
+```
+
+---
+
+**Note:** the frontend source code (Vite + React) now lives in the `frontend` submodule.
